@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>notes</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      .all {
+        margin-left: 90px;
+        margin-right: 90px;
+        margin-top: 40px;
+      }
+      .heading {
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+      }
+      .date {
+        background-color: aqua;
+        color: black;
+        width: 100%;
+        padding: 18px;
+        border-radius: 5px;
+        border: red;
+        margin: auto;
+        margin-top: 20px;
+
+        transition: 0.4s;
+        display: inline-block;
+      }
+      .date:after {
+        content: "\1F447";
+      }
+      /* .date:before {
+        content: "\2B50";
+      } */
+      .notes {
+        padding: 0px 18px;
+        margin-top: 10px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+      }
+
+      /* .active, */
+      .date:hover {
+        background-color: #ccc;
+      }
+
+      .active:after {
+        content: "\1F446";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all">
+      <div class="heading">
+        <h2>gtl</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+          ullam?
+        </p>
+      </div>
+      <button class="date">today</button>
+      <div class="notes">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad quasi
+          aspernatur modi in! Illo sed mollitia debitis, ea cupiditate earum?
+        </p>
+      </div>
+
+      <button class="date">yesterday</button>
+      <div class="notes">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi,
+          quidem id. Dolore vero illo atque voluptates, perspiciatis animi
+          tenetur, excepturi molestiae ducimus omnis dolores. Asperiores
+          recusandae explicabo accusantium a itaque magnam dolorum!
+          Perspiciatis, delectus id quo tempora amet quasi quae!
+        </p>
+      </div>
+
+      <button class="date">tomorrow</button>
+      <div class="notes">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+          perspiciatis nulla maiores rem provident repellat, placeat animi
+          officiis harum perferendis assumenda nihil ut corporis optio amet
+          reprehenderit cumque in ab numquam sequi ipsam molestias? Repellendus
+          aut doloribus iusto dolorem id.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      var acc = document.getElementsByClassName("date");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
