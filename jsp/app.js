@@ -9,6 +9,9 @@ const todoList = document.querySelector(".todo-list");
 //create a click event and add a function of addTodo
 todoButton.addEventListener("click", addTodo);
 
+//for the delete button
+todoList.addEventListener("click", deleleCheck);
+
 //the second part //adding delete functionality
 todoList.addEventListener("click", deleteCheck);
 
@@ -71,6 +74,32 @@ function deleleCheck(e) {
   }
 
   //check
+  if (item.classList[0] === "complete-btn") {
+    const todo = item.parentElement;
+    todo.classList.toggle("completed");
+  }
+}
+
+//for the delete button go to line 12 and then come back here
+function deleleCheck(e) {
+  // console.log(e.target); test with this to see what you are clicking on
+
+  const item = e.target;
+  //delete todo
+  if (item.classList[0] === "trash-btn") {
+    // item.remove(); this will delete only the button
+    const todo = item.parentElement;
+
+    todo.remove(); //make sure to comment out after adding the delete animation
+
+    //to animate the deletion
+    // todo.classList.add("fall");
+    // todo.addEventListener("transitioned", function () {
+    //   todo.remove();
+    // });
+  }
+
+  // for the checkmark
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");

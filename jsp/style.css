@@ -69,6 +69,7 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* transition: all 0.5s ease; */
 }
 
 .todo li {
@@ -102,4 +103,24 @@ form button:hover {
   pointer-events: none;
 }
 
-/* for the animation */
+/* for the animation 
+after creating the delete and checkmark button in javascript
+*/
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* clicking on the checkmark button just makes it go on and off like a traffic light
+lets use some animatioin to stop that */
+
+.todo {
+  transition: all 1s ease;
+}
+
+/* to animate the delete icon */
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
