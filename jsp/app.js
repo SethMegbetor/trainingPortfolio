@@ -4,6 +4,8 @@
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
+// declare the filter selector
+const filterOption = document.querySelector(".filter-todo");
 
 // event listeners
 //create a click event and add a function of addTodo
@@ -13,7 +15,10 @@ todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleleCheck);
 
 //the second part //adding delete functionality
-todoList.addEventListener("click", deleteCheck);
+// todoList.addEventListener("click", deleteCheck);
+
+//for the todo filter
+filterOption.addEventListener("click", filterTodo);
 
 //funtions
 function addTodo(event) {
@@ -92,7 +97,7 @@ function deleleCheck(e) {
 
     todo.remove(); //make sure to comment out after adding the delete animation
 
-    //to animate the deletion
+    //to animate the deletion after animating the checkmark with css
     // todo.classList.add("fall");
     // todo.addEventListener("transitioned", function () {
     //   todo.remove();
@@ -104,4 +109,25 @@ function deleleCheck(e) {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
   }
+}
+
+// after css line 167
+// doing the filter
+// declare the filter selector at the top and add an event listener
+
+function filterTodo(e) {
+  const todos = todoList.childNodes;
+  todos.forEach(function (todo) {
+    switch (e.target.value) {
+      case "all":
+        todo.style.display = "flex";
+        break;
+      case "completed":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+    }
+  });
 }

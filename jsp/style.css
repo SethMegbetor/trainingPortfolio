@@ -124,3 +124,43 @@ lets use some animatioin to stop that */
   transform: translateY(8rem) rotateZ(20deg);
   opacity: 0;
 }
+
+/* lets remove all the styles from the select tag */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  color: tomato;
+  width: 10rem;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+/* now we take the div we created around the select */
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* now what we have to do is to add the arrow back
+get the select div, add a sudo element of after
+*/
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  background: #e6491e;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+/* add some transition to it upon hover */
+.select:hover::after {
+  background: white;
+  color: tomato;
+}
