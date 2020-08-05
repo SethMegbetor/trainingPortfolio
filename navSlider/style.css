@@ -58,7 +58,7 @@ nav ul li {
   padding: 20px 70px;
 }
 
-/* use the sudo selector to select jsut the first one */
+/* use the sudo selector to select just the first one */
 nav ul li:first-of-type {
   border-top: 2px solid rgb(77, 84, 122);
 }
