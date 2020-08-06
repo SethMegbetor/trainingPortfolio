@@ -54,7 +54,7 @@ function addTransactionDOM(transaction) {
   // add a class based on the value entered by the user
   item.classList.add(transaction.amount < 0 ? "minus" : "plus");
 
-  item.innerHTML = `${transaction.text} <span> ${sign}${Math.abs(
+  item.innerHTML = `${transaction.text} <span>${sign}${Math.abs(
     transaction.amount
   )} </span> <button class="delete-btn" onclick = "removeTransaction(${
     transaction.id
@@ -70,9 +70,10 @@ function updateValues() {
 
   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
+  // changed something here
   const income = amounts
-    .filter((item) => 0)
-    .reduce((item) => (acc += item), 0)
+    .filter((item)  => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
 
   const expense = (
@@ -81,9 +82,10 @@ function updateValues() {
   ).toFixed(2);
 
   // updating the content of the html
-  balance.innerHTML = `$${total}`;
-  money_plus.innerHTML = `$${income}`;
-  money_minus.innerHTML = `$${expense}`;
+  // changed from innerhtml to innertext
+  balance.innerText = `$${total}`;
+  money_plus.innerText = `$${income}`;
+  money_minus.innerText = `$${expense}`;
 }
 
 // code to remove a transaction
